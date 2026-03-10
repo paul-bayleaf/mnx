@@ -24,7 +24,7 @@
         "name": "MNX",
         "slug": "mnx",
         "is_json": true,
-        "version": "4"
+        "version": "5"
     }
 },
 {
@@ -410,8 +410,16 @@
         "schema": 1,
         "object_type": 3,
         "uses_global_attrs": true,
-        "regex": "",
-        "description": ""
+        "regex": "^[\\x21-\\x7E]{1,256}$",
+        "description": [
+            "<p>MNX requires that IDs:</p>",
+            "",
+            "<ul>",
+            "<li>Are between 1 and 256 characters long (inclusive)</li>",
+            "<li>Consist only of ASCII characters</li>",
+            "<li>Do not contain spaces or nonprintable characters</li>",
+            "</ul>"
+        ]
     }
 },
 {

@@ -535,6 +535,7 @@
       "type": "string"
     },
     "id": {
+      "pattern": "^[\\x21-\\x7E]{1,256}$",
       "type": "string"
     },
     "id-list": {
@@ -2219,7 +2220,7 @@
       "type": "string"
     }
   },
-  "$id": "https://w3c.github.io/mnx/docs/mnx-schema.json/version/4",
+  "$id": "https://w3c.github.io/mnx/docs/mnx-schema.json/version/5",
   "$ref": "#/$defs/root",
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "description": "An encoding of Common Western Music Notation.",
