@@ -24,7 +24,7 @@
         "name": "MNX",
         "slug": "mnx",
         "is_json": true,
-        "version": "5"
+        "version": "6"
     }
 },
 {
@@ -2247,19 +2247,6 @@
         "slug": "kit-note",
         "schema": 1,
         "object_type": 1,
-        "uses_global_attrs": true,
-        "regex": "",
-        "description": ""
-    }
-},
-{
-    "model": "spectools.jsonobject",
-    "pk": 185,
-    "fields": {
-        "name": "kit component ID",
-        "slug": "kit-component-id",
-        "schema": 1,
-        "object_type": 3,
         "uses_global_attrs": true,
         "regex": "",
         "description": ""
@@ -5251,7 +5238,7 @@
     "fields": {
         "parent": 184,
         "child_key": "kitComponent",
-        "child": 185,
+        "child": 37,
         "is_required": true,
         "description": "The ID of this note's <a href=\"../kit-component/\">kit component</a>."
     }
