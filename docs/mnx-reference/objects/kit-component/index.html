@@ -54,6 +54,12 @@
 
 
 
+<p>A kit component represents a single sound used by a <a href="../">kit</a>, along with the position that should be used when the kit component is displayed on a staff.</p>
+
+<p>This is generally used for unpitched percussion music, and some applications call it a "percussion map." For example, one kit component might be "Bass drum," with the staff position on the bottom staff line (staffPosition -4).</p>
+
+<p>Within an event, a <a href="../kit-note/">kit note</a> encodes a specific instance of a kit component (e.g., a specific hit of the bass drum on the first beat of measure 4).</p>
+
 
 
 <h2>Attributes</h2>
@@ -88,7 +94,7 @@
         
     </td>
     <td>No</td>
-    <td>ID of the sound used for this kit component. See the "sounds" attribute in "global".</td>
+    <td>ID of the <a href="../sound/">sound</a> used for this kit component. See the "sounds" attribute in <a href="../global/">global</a>.</td>
 </tr>
 
 <tr>
