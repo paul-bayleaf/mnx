@@ -736,7 +736,7 @@
         "object_type": 4,
         "uses_global_attrs": true,
         "regex": "",
-        "description": ""
+        "description": "<p>This describes the duration of an alternate ending (a \"volta\"), expressed as a number of bars. It must be an integer greater than or equal to 1.</p>"
     }
 },
 {
@@ -3072,7 +3072,7 @@
         "child_key": "duration",
         "child": 66,
         "is_required": true,
-        "description": ""
+        "description": "The duration of this ending, measured as a number of bars."
     }
 },
 {
