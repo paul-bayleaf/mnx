@@ -854,7 +854,7 @@
         "uses_global_attrs": true,
         "regex": "",
         "description": [
-            "<p>The system-layout object defines a visual layout that can be used by \"score\", \"page\" or \"system\" objects.</p>",
+            "<p>The system-layout object defines a visual layout that can be used by <a href=\"../score/\">score</a>, <a href=\"../page/\">page</a> or <a href=\"../system/\">system</a> objects.</p>",
             "",
             "<p>For example, a layout might say \"Include the vocal part, with the piano part directly below. For the piano part, use a grand-staff brace.\"</p>"
         ]
@@ -946,7 +946,7 @@
         "description": [
             "<p>The page object represents a single page of music — either printed (as on paper) or digitally rendered.</p>",
             "",
-            "<p>It's part of a score and contains a system object for each system of music in the page.</p>"
+            "<p>It's part of a <a href=\"../score/\">score</a> and contains a <a href=\"../system/\">system object</a> for each system of music in the page.</p>"
         ]
     }
 },
@@ -976,7 +976,7 @@
         "description": [
             "<p>The system object describes a system of notation — that is, a collection of staves that represent one or more measures across one or more parts.</p>",
             "",
-            "<p>This element is used in context of a \"page\". Each system specifies its starting measure number and can optionally specify a layout.</p>"
+            "<p>This element is used in context of a <a href=\"../page/\">page</a>. Each system specifies its starting measure number and can optionally specify a layout.</p>"
         ]
     }
 },
@@ -1353,7 +1353,7 @@
         "description": [
             "<p>The staff object describes the visual display of a single staff within a layout.</p>",
             "",
-            "<p>Generally this corresponds to a single part (from the top-level \"parts\" array), but MNX supports encoding multiple parts in the same staff — as might be used, for example, when combining soprano and alto vocal parts into a single staff.</p>"
+            "<p>Generally this corresponds to a single part (from the <a href=\"../root/\">top-level parts array</a>), but MNX supports encoding multiple parts in the same staff — as might be used, for example, when combining soprano and alto vocal parts into a single staff.</p>"
         ]
     }
 },
@@ -3309,9 +3309,9 @@
         "child": 37,
         "is_required": false,
         "description": [
-            "An optional layout to use for the systems in this page. If provided, this should be the ID of a system-layout object in the same MNX document.",
+            "An optional layout to use for the systems in this page. If provided, this should be the ID of a <a href=\"../system-layout/\">system-layout object</a> in the same MNX document.",
             "",
-            "This overrides the layout specified by the parent score object. It can be further overridden, on a per-system basis, in child system objects."
+            "This overrides the layout specified by the parent <a href=\"../score/\">score</a> object. It can be further overridden, on a per-system basis, in child system objects."
         ]
     }
 },
@@ -3357,9 +3357,9 @@
         "child": 37,
         "is_required": false,
         "description": [
-            "An optional layout to use for this system. If provided, this should be the ID of a system-layout object in the same MNX document.",
+            "An optional layout to use for this system. If provided, this should be the ID of a <a href=\"../system-layout/\">system-layout</a> in the same MNX document.",
             "",
-            "This overrides any layout specified by the parent \"page\" or \"score\" objects."
+            "This overrides any layout specified by the parent <a href=\"../page/\">page</a> or <a href=\"../score/\">score</a> objects."
         ]
     }
 },
