@@ -24,7 +24,7 @@
         "name": "MNX",
         "slug": "mnx",
         "is_json": true,
-        "version": "6"
+        "version": "7"
     }
 },
 {
@@ -1085,7 +1085,7 @@
         "object_type": 3,
         "uses_global_attrs": true,
         "regex": "",
-        "description": ""
+        "description": "<p>This data encodes the answer to the question: \"should we display the part's name or the part's shortName\"?</p>"
     }
 },
 {
@@ -6578,6 +6578,24 @@
             "",
             "<img src=\"../../../static/images/staff-group-barline-style/mensurstrich.png\" alt=\"Notation example\">"
         ]
+    }
+},
+{
+    "model": "spectools.jsonobjectenum",
+    "pk": 103,
+    "fields": {
+        "parent": 92,
+        "name": "name",
+        "description": "Use the <a href=\"../part/\">part</a>'s \"name\" attribute."
+    }
+},
+{
+    "model": "spectools.jsonobjectenum",
+    "pk": 104,
+    "fields": {
+        "parent": 92,
+        "name": "shortName",
+        "description": "Use the <a href=\"../part/\">part</a>'s \"shortName\" attribute."
     }
 },
 {
