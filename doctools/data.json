@@ -1111,7 +1111,7 @@
         "object_type": 1,
         "uses_global_attrs": true,
         "regex": "",
-        "description": "<p>The staff source object is the way to specify which parts are included in a given layout. You can optionally target a specific voice or staff (for multi-voice parts).</p>"
+        "description": "<p>The staff source object is the way to specify which <a href=\"../part/\">parts</a> are included in a given <a href=\"../system-layout/\">layout</a>. You can optionally target a specific voice or staff (for multi-voice parts).</p>"
     }
 },
 {
@@ -3452,7 +3452,7 @@
         "child_key": "part",
         "child": 37,
         "is_required": true,
-        "description": "A reference to the appropriate part."
+        "description": "A reference to the appropriate <a href=\"../part/\">part</a>."
     }
 },
 {
@@ -4308,7 +4308,7 @@
         "child": 90,
         "is_required": false,
         "description": [
-            "An optional name for this source's part of the staff. If provided, this should be rendered to the left of the staff, vertically aligned to communicate the label is for this particular source (as opposed to other sources in the same staff).",
+            "An optional name for this source's region of the staff. If provided, this should be rendered to the left of the staff, vertically aligned to communicate the label is for this particular source (as opposed to other sources in the same staff).",
             "",
             "This should only be used in cases where a single staff is sourced from more than one staff source and you want to more than one label for that staff. Otherwise, use a label on the staff object instead."
         ]
