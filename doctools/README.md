@@ -285,7 +285,7 @@ python manage.py runserver
 11. Get a copy of the MusicXML schema (the file `musicxml.xsd`):
 
 ```
-curl https://raw.githubusercontent.com/w3c/musicxml/gh-pages/schema/musicxml.xsd > musicxml.xsd
+curl https://raw.githubusercontent.com/w3c-cg/musicxml/gh-pages/schema/musicxml.xsd > musicxml.xsd
 ```
 
 12. Import the MusicXML schema into your local database:

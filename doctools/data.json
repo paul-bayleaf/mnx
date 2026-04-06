@@ -1276,7 +1276,7 @@
         "uses_global_attrs": true,
         "regex": "",
         "description": [
-            "<p>A string representing a glyph name in the <a href=\"https://w3c.github.io/smufl/latest/\">SMuFL music-font-encoding specification</a>.",
+            "<p>A string representing a glyph name in the <a href=\"https://w3c-cg.github.io/smufl/latest/\">SMuFL music-font-encoding specification</a>.",
             "",
             "In MNX, this is generally used to override default engraving behavior.",
             "",
@@ -1905,7 +1905,7 @@
         "object_type": 3,
         "uses_global_attrs": true,
         "regex": "",
-        "description": "<p>See https://w3c.github.io/musicxml/musicxml-reference/data-types/breath-mark-value/</p>"
+        "description": "<p>See https://w3c-cg.github.io/musicxml/musicxml-reference/data-types/breath-mark-value/</p>"
     }
 },
 {
@@ -3657,7 +3657,7 @@
         "child": 106,
         "is_required": false,
         "description": [
-            "A specific SMuFL glyph name to be used when rendering this clef, e.g. <code>gClefArrowUp</code>. See <a href=\"https://w3c.github.io/smufl/latest/tables/clefs.html\">SMuFL clef glyphs</a>.",
+            "A specific SMuFL glyph name to be used when rendering this clef, e.g. <code>gClefArrowUp</code>. See <a href=\"https://w3c-cg.github.io/smufl/latest/tables/clefs.html\">SMuFL clef glyphs</a>.",
             "",
             "We encourage you to use this sparingly. In the case of octave-transposing clefs, it's better to use <code>octave</code> and <code>showOctave</code> rather than just using <code>glyph</code>."
         ]
@@ -4014,7 +4014,7 @@
         "description": [
             "If provided, this specifies the vertical position of the rest on the staff. If not provided, the rest should be positioned automatically according to convention.",
             "",
-            "This vertical position is the \"origin point\" from which the rest symbol's SMuFL glyph is drawn. For example, a quarter rest is drawn from its vertical midpoint. See the <a href=\"https://w3c.github.io/smufl/latest/tables/rests.html\">SMuFL rests documentation</a> for more."
+            "This vertical position is the \"origin point\" from which the rest symbol's SMuFL glyph is drawn. For example, a quarter rest is drawn from its vertical midpoint. See the <a href=\"https://w3c-cg.github.io/smufl/latest/tables/rests.html\">SMuFL rests documentation</a> for more."
         ]
     }
 },
@@ -5630,7 +5630,7 @@
         "description": [
             "If provided, this specifies the vertical position of the rest on the staff. If not provided, the rest should be positioned automatically according to convention.",
             "",
-            "This vertical position is the \"origin point\" from which the rest symbol's SMuFL glyph is drawn. For example, a quarter rest is drawn from its vertical midpoint. See the <a href=\"https://w3c.github.io/smufl/latest/tables/rests.html\">SMuFL rests documentation</a> for more."
+            "This vertical position is the \"origin point\" from which the rest symbol's SMuFL glyph is drawn. For example, a quarter rest is drawn from its vertical midpoint. See the <a href=\"https://w3c-cg.github.io/smufl/latest/tables/rests.html\">SMuFL rests documentation</a> for more."
         ]
     }
 },
