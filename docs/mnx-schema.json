@@ -1118,6 +1118,33 @@
       },
       "type": "array"
     },
+    "non-arpeggio": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/global-attrs"
+        }
+      ],
+      "properties": {
+        "position": {
+          "$ref": "#/$defs/rhythmic-position"
+        },
+        "span": {
+          "$ref": "#/$defs/id-pair"
+        }
+      },
+      "required": [
+        "position",
+        "span"
+      ],
+      "type": "object",
+      "unevaluatedProperties": false
+    },
+    "non-arpeggio-list": {
+      "items": {
+        "$ref": "#/$defs/non-arpeggio"
+      },
+      "type": "array"
+    },
     "note": {
       "allOf": [
         {
@@ -1372,6 +1399,9 @@
         },
         "dynamics": {
           "$ref": "#/$defs/dynamic-list"
+        },
+        "nonArpeggios": {
+          "$ref": "#/$defs/non-arpeggio-list"
         },
         "ottavas": {
           "$ref": "#/$defs/ottava-list"
@@ -2402,7 +2432,7 @@
       "type": "string"
     }
   },
-  "$id": "https://w3c-cg.github.io/mnx/docs/mnx-schema.json/version/16",
+  "$id": "https://w3c-cg.github.io/mnx/docs/mnx-schema.json/version/17",
   "$ref": "#/$defs/root",
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "description": "An encoding of Common Western Music Notation.",

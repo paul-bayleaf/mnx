@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<title>The ID pair object | MNX specification</title>
+<title>The non-arpeggio object | MNX specification</title>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta name="viewport" content="width=device-width">
 <link rel="stylesheet" href="../../../static/styles.css">
@@ -44,17 +44,21 @@
     <a href="../../../">MNX specification</a> &gt;
     <a href="../../">MNX reference</a> &gt;
     <a href="../">Objects</a> &gt;
-    ID pair
+    non-arpeggio
 </p>
 
-<h1>The ID pair object</h1>
+<h1>The non-arpeggio object</h1>
 
 <p><b>Type:</b> Dictionary</p>
 
 
 
 
-<p>Represents a pair of IDs within the MNX document. Both are required.</p>
+<p>Represents a non-arpeggio marking: the vertical marking that communicates that several notes with the same rhythmic position are <em>not</em> to be performed as an arpeggio. This is typically drawn as a square bracket to the left of the relevant notes.</p>
+
+<p>Note a non-arpeggio marking might consist of notes across several staves. This is valid, as long as those staves are in the same <a href="../part/">part</a>.</p>
+
+<p>See also: <a href="../arpeggio/">arpeggios</a>.</p>
 
 
 
@@ -72,30 +76,34 @@
 
 
 <tr>
-    <td><nobr><b>end</b></nobr></td>
+    <td><nobr><b>position</b></nobr></td>
     <td>
         
-        <a href="../id/">ID</a>
+        <a href="../rhythmic-position/">rhythmic position</a>
         
     </td>
     <td>Yes</td>
-    <td></td>
+    <td>The non-arpeggio's position within the bar.</td>
 </tr>
 
 <tr>
-    <td><nobr><b>start</b></nobr></td>
+    <td><nobr><b>span</b></nobr></td>
     <td>
         
-        <a href="../id/">ID</a>
+        <a href="../id-pair/">ID pair</a>
         
     </td>
     <td>Yes</td>
-    <td></td>
+    <td>The IDs of the two <a href="../note/">notes</a> that comprise this non-arpeggio. The "start" ID is the note with the lower sounded pitch, and the "end" ID is the note with the higher pitch. This provides the necessary information to draw the non-arpeggio marking.<br><br>Both notes must be in the same rhythmic position within the same bar and same part. Note they're <em>not</em> required to be in the same sequence; cross-sequence (aka cross-voice) and cross-staff non-arpeggios are supported, as long as the sequences and staves are in the same <a href="../part/">part</a>.<br><br>All inner notes (i.e., any other notes that are encoded at this rhythmic position and whose pitch lies between the "start" and "end" notes) are interpreted as being within the non-arpeggio; they are not explicitly encoded.</td>
 </tr>
 
 
 </table>
 
+
+<p>Plus <a href="../global-attrs/">globally available attributes</a>:
+<b>_c</b>, <b>_x</b>, <b>id</b>
+</p>
 
 
 
@@ -109,9 +117,7 @@
 
 <ul>
 
-<li><a href="../arpeggio/">arpeggio</a>: "span"</li>
-
-<li><a href="../non-arpeggio/">non-arpeggio</a>: "span"</li>
+<li><a href="../part-measure/">part measure</a>: "nonArpeggios"</li>
 
 </ul>
 
