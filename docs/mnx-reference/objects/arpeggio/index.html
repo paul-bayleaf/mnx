@@ -1,0 +1,156 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>The arpeggio object | MNX specification</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width">
+<link rel="stylesheet" href="../../../static/styles.css">
+
+</head>
+
+<body class="has-sidenav">
+<div class="topnav">
+    <button id="toggle" class="toggle">
+        <svg viewBox="0 0 100 80" width="16" height="16" fill="currentColor">
+          <rect width="100" height="20" rx="8"></rect>
+          <rect y="30" width="100" height="20" rx="8"></rect>
+          <rect y="60" width="100" height="20" rx="8"></rect>
+        </svg>
+    </button>
+    <a class="logo" href="../../../">
+        <span class="logo-text">MNX specification</span>
+    </a>
+</div>
+
+
+<div class="content">
+    <nav class="sidenav">
+        <ul>
+<li><a href="../../../">Home</a></li>
+<li><a href="../">Reference</a>
+    <ul>
+    <li><a href="../">Objects</a></li>
+    <li><a href="../../examples/">Example documents</a></li>
+    <li><a href="../../../mnx-schema.json">Raw JSON Schema</a></li>
+    </ul>
+</li>
+<li><a href="../../../comparisons/musicxml/">MNX and MusicXML</a></li>
+</ul>
+    </nav>
+    <main>
+    
+<p class="breadcrumb">
+    <a href="../../../">MNX specification</a> &gt;
+    <a href="../../">MNX reference</a> &gt;
+    <a href="../">Objects</a> &gt;
+    arpeggio
+</p>
+
+<h1>The arpeggio object</h1>
+
+<p><b>Type:</b> Dictionary</p>
+
+
+
+
+<p>Represents an arpeggio marking (the vertical marking that communicates that several notes with the same rhythmic position are to be performed as an arpeggio).</p>
+
+<p>Note an arpeggio marking might consist of notes across several staves. This is valid, as long as those staves are in the same <a href="../part/">part</a>.</p>
+
+
+
+<h2>Attributes</h2>
+
+<table>
+<thead>
+<tr>
+    <th>Name</th>
+    <th>Type</th>
+    <th>Required?</th>
+    <th>Description</th>
+</tr>
+</thead>
+
+
+<tr>
+    <td><nobr><b>arrow</b></nobr></td>
+    <td>
+        
+        <a href="../boolean/">boolean</a>
+        
+    </td>
+    <td>No</td>
+    <td>Whether an arrow should be drawn at the end of the arpeggio marking. This visually communicates the direction of the arpeggio, though some published music chooses not to display an arrow as a matter of style.<br><br>If not specified, the default value is false.</td>
+</tr>
+
+<tr>
+    <td><nobr><b>direction</b></nobr></td>
+    <td>
+        
+        <a href="../up-down-auto/">up, down or auto</a>
+        
+    </td>
+    <td>No</td>
+    <td>The direction that this arpeggio's notes are arpeggiated. "up" means from lower-pitched notes to higher-pitched notes, and "down" means the opposite. "auto" means consuming applications are free to decide automatically.<br><br>If not specfiied, the default value is "auto".</td>
+</tr>
+
+<tr>
+    <td><nobr><b>position</b></nobr></td>
+    <td>
+        
+        <a href="../rhythmic-position/">rhythmic position</a>
+        
+    </td>
+    <td>Yes</td>
+    <td>The arpeggio's position within the bar.</td>
+</tr>
+
+<tr>
+    <td><nobr><b>span</b></nobr></td>
+    <td>
+        
+        <a href="../id-pair/">ID pair</a>
+        
+    </td>
+    <td>Yes</td>
+    <td>The IDs of the two <a href="../note/">notes</a> that comprise this arpeggio. The "start" ID is the first-played note, and the "end" ID represents the last-played note. This provides the necessary information to draw the arpeggio marking and interpret its playback.<br><br>Both notes must be in the same rhythmic position within the same bar and same part. Note they're <em>not</em> required to be in the same sequence; cross-sequence (aka cross-voice) and cross-staff arpeggios are supported, as long as the sequences and staves are in the same <a href="../part/">part</a>.<br><br>All inner notes (i.e., any other notes that are encoded at this rhythmic position and whose pitch lies betewen the "start" and "end" notes) are interpreted as being within the arpeggio; they are not explicitly encoded.</td>
+</tr>
+
+
+</table>
+
+
+<p>Plus <a href="../global-attrs/">globally available attributes</a>:
+<b>_c</b>, <b>_x</b>, <b>id</b>
+</p>
+
+
+
+
+
+
+
+<h2>Parent objects</h2>
+
+<p>This object is used by the following parent objects:</p>
+
+<ul>
+
+<li><a href="../part-measure/">part measure</a>: "arpeggios"</li>
+
+</ul>
+
+
+
+
+
+
+    </main>
+</div>
+
+
+<script type="text/javascript" src="../../../static/global.js"></script>
+
+</body>
+</html>

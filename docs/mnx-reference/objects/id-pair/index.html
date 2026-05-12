@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<title>The up, down or auto object | MNX specification</title>
+<title>The ID pair object | MNX specification</title>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta name="viewport" content="width=device-width">
 <link rel="stylesheet" href="../../../static/styles.css">
@@ -44,50 +44,62 @@
     <a href="../../../">MNX specification</a> &gt;
     <a href="../../">MNX reference</a> &gt;
     <a href="../">Objects</a> &gt;
-    up, down or auto
+    ID pair
 </p>
 
-<h1>The up, down or auto object</h1>
+<h1>The ID pair object</h1>
 
-<p><b>Type:</b> String</p>
-
-
-
-
-<p>Describes the direction a musical symbol should be pointing. This is used for symbols that are allowed to point in multiple directions depending on musical context.</p>
-
-<p>See also <a href="../up-down/">up or down</a>, a more constrained data type that doesn't support the value "auto".</p>
+<p><b>Type:</b> Dictionary</p>
 
 
 
 
+<p>Represents a pair of IDs within the MNX document. Both are required.</p>
 
-<h2>Allowed values:</h2>
+
+
+<h2>Attributes</h2>
 
 <table>
 <thead>
 <tr>
-    <th>Value</th>
+    <th>Name</th>
+    <th>Type</th>
+    <th>Required?</th>
     <th>Description</th>
 </tr>
 </thead>
 
+
 <tr>
-    <td><nobr><b>&quot;auto&quot;</b></nobr></td>
-    <td>Consuming applications are free to determine the symbol direction based on their own algorithms.</td>
+    <td><nobr><b>end</b></nobr></td>
+    <td>
+        
+        <a href="../id/">ID</a>
+        
+    </td>
+    <td>Yes</td>
+    <td></td>
 </tr>
 
 <tr>
-    <td><nobr><b>&quot;down&quot;</b></nobr></td>
-    <td>The symbol is pointing downward.</td>
+    <td><nobr><b>start</b></nobr></td>
+    <td>
+        
+        <a href="../id/">ID</a>
+        
+    </td>
+    <td>Yes</td>
+    <td></td>
 </tr>
 
-<tr>
-    <td><nobr><b>&quot;up&quot;</b></nobr></td>
-    <td>The symbol is pointing upward.</td>
-</tr>
 
 </table>
+
+
+
+
+
 
 
 
@@ -97,11 +109,7 @@
 
 <ul>
 
-<li><a href="../arpeggio/">arpeggio</a>: "direction"</li>
-
-<li><a href="../fermata/">fermata</a>: "pointing"</li>
-
-<li><a href="../strong-accent/">strong accent</a>: "pointing"</li>
+<li><a href="../arpeggio/">arpeggio</a>: "span"</li>
 
 </ul>
 

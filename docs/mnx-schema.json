@@ -64,6 +64,39 @@
     "alter": {
       "type": "integer"
     },
+    "arpeggio": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/global-attrs"
+        }
+      ],
+      "properties": {
+        "arrow": {
+          "type": "boolean"
+        },
+        "direction": {
+          "$ref": "#/$defs/up-down-auto"
+        },
+        "position": {
+          "$ref": "#/$defs/rhythmic-position"
+        },
+        "span": {
+          "$ref": "#/$defs/id-pair"
+        }
+      },
+      "required": [
+        "position",
+        "span"
+      ],
+      "type": "object",
+      "unevaluatedProperties": false
+    },
+    "arpeggio-list": {
+      "items": {
+        "$ref": "#/$defs/arpeggio"
+      },
+      "type": "array"
+    },
     "barline": {
       "allOf": [
         {
@@ -623,6 +656,21 @@
         "$ref": "#/$defs/id"
       },
       "type": "array"
+    },
+    "id-pair": {
+      "properties": {
+        "end": {
+          "$ref": "#/$defs/id"
+        },
+        "start": {
+          "$ref": "#/$defs/id"
+        }
+      },
+      "required": [
+        "end",
+        "start"
+      ],
+      "type": "object"
     },
     "integer-signed": {
       "type": "integer"
@@ -1313,6 +1361,9 @@
         }
       ],
       "properties": {
+        "arpeggios": {
+          "$ref": "#/$defs/arpeggio-list"
+        },
         "beams": {
           "$ref": "#/$defs/beam-list"
         },
@@ -2351,7 +2402,7 @@
       "type": "string"
     }
   },
-  "$id": "https://w3c-cg.github.io/mnx/docs/mnx-schema.json/version/15",
+  "$id": "https://w3c-cg.github.io/mnx/docs/mnx-schema.json/version/16",
   "$ref": "#/$defs/root",
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "description": "An encoding of Common Western Music Notation.",

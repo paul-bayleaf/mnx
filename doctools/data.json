@@ -24,7 +24,7 @@
         "name": "MNX",
         "slug": "mnx",
         "is_json": true,
-        "version": "15"
+        "version": "16"
     }
 },
 {
@@ -2526,6 +2526,49 @@
             "",
             "<p>See also <a href=\"../up-down-auto/\">up, down or auto</a>, a slightly looser data type that also supports the value \"auto\".</p>"
         ]
+    }
+},
+{
+    "model": "spectools.jsonobject",
+    "pk": 207,
+    "fields": {
+        "name": "arpeggio list",
+        "slug": "arpeggio-list",
+        "schema": 1,
+        "object_type": 2,
+        "uses_global_attrs": true,
+        "regex": "",
+        "description": ""
+    }
+},
+{
+    "model": "spectools.jsonobject",
+    "pk": 208,
+    "fields": {
+        "name": "arpeggio",
+        "slug": "arpeggio",
+        "schema": 1,
+        "object_type": 1,
+        "uses_global_attrs": true,
+        "regex": "",
+        "description": [
+            "<p>Represents an arpeggio marking (the vertical marking that communicates that several notes with the same rhythmic position are to be performed as an arpeggio).</p>",
+            "",
+            "<p>Note an arpeggio marking might consist of notes across several staves. This is valid, as long as those staves are in the same <a href=\"../part/\">part</a>.</p>"
+        ]
+    }
+},
+{
+    "model": "spectools.jsonobject",
+    "pk": 209,
+    "fields": {
+        "name": "ID pair",
+        "slug": "id-pair",
+        "schema": 1,
+        "object_type": 1,
+        "uses_global_attrs": false,
+        "regex": "",
+        "description": "<p>Represents a pair of IDs within the MNX document. Both are required.</p>"
     }
 },
 {
@@ -6006,6 +6049,108 @@
             "Whether this marking is displayed above or below the associated event.",
             "",
             "If omitted, the default value is \"auto\"."
+        ]
+    }
+},
+{
+    "model": "spectools.jsonobjectrelationship",
+    "pk": 340,
+    "fields": {
+        "parent": 16,
+        "child_key": "arpeggios",
+        "child": 207,
+        "is_required": false,
+        "description": "All arpeggios in this part-measure."
+    }
+},
+{
+    "model": "spectools.jsonobjectrelationship",
+    "pk": 341,
+    "fields": {
+        "parent": 207,
+        "child_key": "0",
+        "child": 208,
+        "is_required": false,
+        "description": ""
+    }
+},
+{
+    "model": "spectools.jsonobjectrelationship",
+    "pk": 342,
+    "fields": {
+        "parent": 208,
+        "child_key": "position",
+        "child": 140,
+        "is_required": true,
+        "description": "The arpeggio's position within the bar."
+    }
+},
+{
+    "model": "spectools.jsonobjectrelationship",
+    "pk": 343,
+    "fields": {
+        "parent": 208,
+        "child_key": "direction",
+        "child": 157,
+        "is_required": false,
+        "description": [
+            "The direction that this arpeggio's notes are arpeggiated. \"up\" means from lower-pitched notes to higher-pitched notes, and \"down\" means the opposite. \"auto\" means consuming applications are free to decide automatically.",
+            "",
+            "If not specfiied, the default value is \"auto\"."
+        ]
+    }
+},
+{
+    "model": "spectools.jsonobjectrelationship",
+    "pk": 344,
+    "fields": {
+        "parent": 208,
+        "child_key": "arrow",
+        "child": 112,
+        "is_required": false,
+        "description": [
+            "Whether an arrow should be drawn at the end of the arpeggio marking. This visually communicates the direction of the arpeggio, though some published music chooses not to display an arrow as a matter of style.",
+            "",
+            "If not specified, the default value is false."
+        ]
+    }
+},
+{
+    "model": "spectools.jsonobjectrelationship",
+    "pk": 345,
+    "fields": {
+        "parent": 209,
+        "child_key": "start",
+        "child": 37,
+        "is_required": true,
+        "description": ""
+    }
+},
+{
+    "model": "spectools.jsonobjectrelationship",
+    "pk": 346,
+    "fields": {
+        "parent": 209,
+        "child_key": "end",
+        "child": 37,
+        "is_required": true,
+        "description": ""
+    }
+},
+{
+    "model": "spectools.jsonobjectrelationship",
+    "pk": 347,
+    "fields": {
+        "parent": 208,
+        "child_key": "span",
+        "child": 209,
+        "is_required": true,
+        "description": [
+            "The IDs of the two <a href=\"../note/\">notes</a> that comprise this arpeggio. The \"start\" ID is the first-played note, and the \"end\" ID represents the last-played note. This provides the necessary information to draw the arpeggio marking and interpret its playback.",
+            "",
+            "Both notes must be in the same rhythmic position within the same bar and same part. Note they're <em>not</em> required to be in the same sequence; cross-sequence (aka cross-voice) and cross-staff arpeggios are supported, as long as the sequences and staves are in the same <a href=\"../part/\">part</a>.",
+            "",
+            "All inner notes (i.e., any other notes that are encoded at this rhythmic position and whose pitch lies betewen the \"start\" and \"end\" notes) are interpreted as being within the arpeggio; they are not explicitly encoded."
         ]
     }
 },
