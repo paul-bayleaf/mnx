@@ -6180,7 +6180,7 @@
         "child": 209,
         "is_required": true,
         "description": [
-            "The IDs of the two <a href=\"../note/\">notes</a> that comprise this arpeggio. The \"start\" ID is the first-played note, and the \"end\" ID represents the last-played note. This provides the necessary information to draw the arpeggio marking and interpret its playback.",
+            "The IDs of the two <a href=\"../note/\">notes</a> that bookend this arpeggio. The \"start\" ID is the first-played note, and the \"end\" ID represents the last-played note. This provides the necessary information to draw the arpeggio marking and interpret its playback.",
             "",
             "Both notes must be in the same rhythmic position within the same bar and same part. Note they're <em>not</em> required to be in the same sequence; cross-sequence (aka cross-voice) and cross-staff arpeggios are supported, as long as the sequences and staves are in the same <a href=\"../part/\">part</a>.",
             "",
@@ -6230,7 +6230,7 @@
         "child": 209,
         "is_required": true,
         "description": [
-            "The IDs of the two <a href=\"../note/\">notes</a> that comprise this non-arpeggio. The \"start\" ID is the note with the lower sounded pitch, and the \"end\" ID is the note with the higher pitch. This provides the necessary information to draw the non-arpeggio marking.",
+            "The IDs of the two <a href=\"../note/\">notes</a> that bookend this non-arpeggio. The \"start\" ID is the note with the lower sounded pitch, and the \"end\" ID is the note with the higher pitch. This provides the necessary information to draw the non-arpeggio marking.",
             "",
             "Both notes must be in the same rhythmic position within the same bar and same part. Note they're <em>not</em> required to be in the same sequence; cross-sequence (aka cross-voice) and cross-staff non-arpeggios are supported, as long as the sequences and staves are in the same <a href=\"../part/\">part</a>.",
             "",
