@@ -1,0 +1,209 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>The relative dynamic object | MNX specification</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width">
+<link rel="stylesheet" href="../../../static/styles.css">
+
+</head>
+
+<body class="has-sidenav">
+<div class="topnav">
+    <button id="toggle" class="toggle">
+        <svg viewBox="0 0 100 80" width="16" height="16" fill="currentColor">
+          <rect width="100" height="20" rx="8"></rect>
+          <rect y="30" width="100" height="20" rx="8"></rect>
+          <rect y="60" width="100" height="20" rx="8"></rect>
+        </svg>
+    </button>
+    <a class="logo" href="../../../">
+        <span class="logo-text">MNX specification</span>
+    </a>
+</div>
+
+
+<div class="content">
+    <nav class="sidenav">
+        <ul>
+<li><a href="../../../">Home</a></li>
+<li><a href="../">Reference</a>
+    <ul>
+    <li><a href="../">Objects</a></li>
+    <li><a href="../../examples/">Example documents</a></li>
+    <li><a href="../../../mnx-schema.json">Raw JSON Schema</a></li>
+    </ul>
+</li>
+<li><a href="../../../comparisons/musicxml/">MNX and MusicXML</a></li>
+</ul>
+    </nav>
+    <main>
+    
+<p class="breadcrumb">
+    <a href="../../../">MNX specification</a> &gt;
+    <a href="../../">MNX reference</a> &gt;
+    <a href="../">Objects</a> &gt;
+    relative dynamic
+</p>
+
+<h1>The relative dynamic object</h1>
+
+<p><b>Type:</b> Dictionary</p>
+
+
+
+
+<p>A relative dynamic is one whose value is meant to be interpreted relatively, like <i>più</i> p ("quieter").</p>
+
+
+
+<h2>Attributes</h2>
+
+<table>
+<thead>
+<tr>
+    <th>Name</th>
+    <th>Type</th>
+    <th>Required?</th>
+    <th>Description</th>
+</tr>
+</thead>
+
+
+<tr>
+    <td><nobr><b>type</b></nobr></td>
+    <td>
+        
+            The string <code>"relative"</code>
+        
+    </td>
+    <td>Yes</td>
+    <td></td>
+</tr>
+
+<tr>
+    <td><nobr><b>relativeValue</b></nobr></td>
+    <td>
+        
+        <a href="../relative-dynamic-value/">relative dynamic value</a>
+        
+    </td>
+    <td>Yes</td>
+    <td></td>
+</tr>
+
+<tr>
+    <td><nobr><b>position</b></nobr></td>
+    <td>
+        
+        <a href="../rhythmic-position/">rhythmic position</a>
+        
+    </td>
+    <td>Yes</td>
+    <td>The rhythmic position at which this dynamic group starts.</td>
+</tr>
+
+<tr>
+    <td><nobr><b>prefix</b></nobr></td>
+    <td>
+        
+        <a href="../string/">string</a>
+        
+    </td>
+    <td>No</td>
+    <td>Optional text to display before the dynamic marking, such as "<i>più</i>".<br><br>This is free-form text displayed alongside the marking.</td>
+</tr>
+
+<tr>
+    <td><nobr><b>suffix</b></nobr></td>
+    <td>
+        
+        <a href="../string/">string</a>
+        
+    </td>
+    <td>No</td>
+    <td>Optional text to display after the dynamic marking, such as "<i>sub.</i>".<br><br>This is free-form text displayed alongside the marking.</td>
+</tr>
+
+<tr>
+    <td><nobr><b>placement</b></nobr></td>
+    <td>
+        
+        <a href="../multi-staff-placement/">multi-staff placement</a>
+        
+    </td>
+    <td>No</td>
+    <td>Where the dynamic group is positioned, relative to the staff.<br><br>If not provided, the default value is "auto".</td>
+</tr>
+
+<tr>
+    <td><nobr><b>staff</b></nobr></td>
+    <td>
+        
+        <a href="../staff-number/">staff number</a>
+        
+    </td>
+    <td>No</td>
+    <td>The staff index to which this dynamic group applies. By default, a dynamic group applies to all staffs in the <a href="../part/">part</a>.</td>
+</tr>
+
+<tr>
+    <td><nobr><b>visuallyContinues</b></nobr></td>
+    <td>
+        
+        <a href="../id/">ID</a>
+        
+    </td>
+    <td>No</td>
+    <td>Points to the ID of the directly previous dynamic group, as a hint to rendering engines that this dynamic group and that previous one should be rendered as a single unit. (Typically this means the dynamics and hairpins are drawn at the same vertical position.)<br><br>There is no limit to the length of a "visuallyContinues" chain. For example, it's perfectly OK for three or four dynamic groups to each define "visuallyContinues" pointing at the previous dynamic group.<br><br>Encoding this is only strictly necessary if it can't be automatically derived by comparing consecutive dynamic groups' "position" and "end" attributes. Rendering engines are encouraged to determine the visuallyContinues value on their own, if it's not explicitly encoded.</td>
+</tr>
+
+<tr>
+    <td><nobr><b>voice</b></nobr></td>
+    <td>
+        
+        <a href="../voice-name/">voice name</a>
+        
+    </td>
+    <td>No</td>
+    <td>The voice to which this dynamic group applies. By default, a dynamic group applies to all voices in the <a href="../part/">part</a>.</td>
+</tr>
+
+
+</table>
+
+
+<p>Plus <a href="../global-attrs/">globally available attributes</a>:
+<b>_c</b>, <b>_x</b>, <b>id</b>
+</p>
+
+
+
+
+
+
+
+<h2>Parent objects</h2>
+
+<p>This object is used by the following parent objects:</p>
+
+<ul>
+
+<li><a href="../part-measure/">part measure</a>: "dynamics"</li>
+
+</ul>
+
+
+
+
+
+
+    </main>
+</div>
+
+
+<script type="text/javascript" src="../../../static/global.js"></script>
+
+</body>
+</html>

@@ -1,5 +1,5 @@
 {
-    "version": 40,
+    "version": 41,
     "format": {
         "name": "MNX",
         "slug": "mnx"
@@ -302,11 +302,11 @@
                     ]
                 },
                 "dynamics": {
-                    "items": [
-                        "dynamic-group"
-                    ],
+                    "type": "dynamic-groups",
                     "description": [
-                        "All dynamics in this part-measure."
+                        "All dynamics in this part-measure. Four types of dynamics are supported: immediate, gradual, relative and accent.",
+                        "",
+                        "Each object in this list has a \"type\" attribute that distinguishes between different types of dynamics. This can be \"immediate\" (such as a notated \"p\"), \"gradual\" (such as a crescendo hairpin), \"accent\" (such as \"sfz\") or \"relative\" (such as a notated \"<i>più</i> p\", meaning \"quieter\").</p>"
                     ]
                 },
                 "measureRepeat": {
@@ -3291,34 +3291,35 @@
                 "<p>See also: <a href=\"../arpeggio/\">arpeggios</a>.</p>"
             ]
         },
-        "dynamic-group": {
-            "title": "dynamic group",
+        "dynamic-groups": {
+            "kind": "array",
+            "items": [
+                "dynamic-group-immediate",
+                "dynamic-group-gradual",
+                "dynamic-group-relative",
+                "dynamic-group-accent"
+            ]
+        },
+        "dynamic-group-immediate": {
+            "title": "immediate dynamic",
             "kind": "dict",
             "properties": {
-                "accentPrefix": {
-                    "type": "dynamic-prefix",
+                "type": {
+                    "const": "immediate",
+                    "required": true
+                },
+                "value": {
+                    "type": "dynamic-value",
+                    "required": true,
                     "description": [
-                        "Only valid for type=\"accent\". This encodes the prefix for the dynamic.",
-                        "",
-                        "For example, for a \"sfz\" dynamic, the prefix is \"s\".",
-                        "",
-                        "If not provided, the default is \"s\"."
+                        "This defines the dynamic value, such as \"p\" or \"f\"."
                     ]
                 },
-                "accentSuffix": {
-                    "type": "dynamic-suffix",
+                "position": {
+                    "type": "rhythmic-position",
+                    "required": true,
                     "description": [
-                        "Only valid for type=\"accent\". This encodes the suffix for the dynamic.",
-                        "",
-                        "For example, for a \"sfz\" dynamic, the suffix is \"z\".",
-                        "",
-                        "If not provided, the default is \"z\"."
-                    ]
-                },
-                "end": {
-                    "type": "measure-rhythmic-position",
-                    "description": [
-                        "Required if type is \"gradual\". This defines the endpoint of the gradual dynamic."
+                        "The rhythmic position at which this dynamic group starts."
                     ]
                 },
                 "glyphs": {
@@ -3328,7 +3329,23 @@
                     "description": [
                         "Optional list of SMuFL glyphs to use when displaying this dynamic.",
                         "",
-                        "If this is provided, consuming applications should use these specific glyphs. If this isn't provided, consuming applications should automatically determine the SMuFL glyphs based on \"value\", \"attackValue\" and \"relativeValue\"."
+                        "If this is provided, consuming applications should use these specific glyphs. If this isn't provided, consuming applications should automatically determine the SMuFL glyphs based on \"value\"."
+                    ]
+                },
+                "prefix": {
+                    "type": "string",
+                    "description": [
+                        "Optional text to display before the dynamic marking, such as \"<i>più</i>\".",
+                        "",
+                        "This is free-form text displayed alongside the marking."
+                    ]
+                },
+                "suffix": {
+                    "type": "string",
+                    "description": [
+                        "Optional text to display after the dynamic marking, such as \"<i>sub.</i>\".",
+                        "",
+                        "This is free-form text displayed alongside the marking."
                     ]
                 },
                 "placement": {
@@ -3339,70 +3356,10 @@
                         "If not provided, the default value is \"auto\"."
                     ]
                 },
-                "position": {
-                    "type": "rhythmic-position",
-                    "required": true,
-                    "description": [
-                        "The rhythmic position at which this dynamic group starts."
-                    ]
-                },
-                "prefix": {
-                    "type": "string",
-                    "description": [
-                        "Optional text to display before the dynamic marking, such as \"<i>più</i>\".",
-                        "",
-                        "This is free-form text displayed alongside the marking. It is not related to accentPrefix, which encodes a structural part of an accent marking itself."
-                    ]
-                },
-                "relativeValue": {
-                    "type": "relative-dynamic-value",
-                    "description": [
-                        "Required if type is \"relative\"."
-                    ]
-                },
-                "residualValue": {
-                    "type": "dynamic-value",
-                    "description": [
-                        "Only valid for type=\"accent\". This encodes the dynamic that should be used after the initial accent attack.",
-                        "",
-                        "For example, this is used for \"fp\" dynamics, which are a bit of a special case meaning \"start playing in f, then immediately reduce dynamics to p.\" This is encoded as {\"value\": \"f\", \"residualValue\": \"p\"}."
-                    ]
-                },
                 "staff": {
                     "type": "staff-number",
                     "description": [
                         "The staff index to which this dynamic group applies. By default, a dynamic group applies to all staffs in the <a href=\"../part/\">part</a>."
-                    ]
-                },
-                "staffEnd": {
-                    "type": "staff-number",
-                    "description": [
-                        "Only valid for type=\"gradual.\" This optionally encodes the staff at which the hairpin ends, for hairpins that are angled diagonally and cross staves."
-                    ]
-                },
-                "suffix": {
-                    "type": "string",
-                    "description": [
-                        "Optional text to display after the dynamic marking, such as \"<i>sub.</i>\".",
-                        "",
-                        "This is free-form text displayed alongside the marking. It is not related to accentSuffix, which encodes a structural part of an accent marking itself."
-                    ]
-                },
-                "type": {
-                    "type": "dynamic-group-type",
-                    "required": true,
-                    "description": [
-                        "Distinguishes between different types of dynamics. This can be \"immediate\" (such as a notated \"p\"), \"gradual\" (such as a crescendo hairpin), \"accent\" (such as \"sfz\") or \"relative\" (such as a notated \"<i>più</i> p\", meaning \"quieter\").</p>"
-                    ]
-                },
-                "value": {
-                    "type": "dynamic-value",
-                    "description": [
-                        "Required if type is \"immediate\". This defines the dynamic value, such as \"p\" or \"f\".",
-                        "",
-                        "For gradual dynamics, this is the dynamic value at the beginning.",
-                        "",
-                        "For accent dynamics, this is the value of the initial attack (the \"f\" in \"sfz\"). See residualValue for the dynamic that applies afterward."
                     ]
                 },
                 "visuallyContinues": {
@@ -3420,27 +3377,104 @@
                     "description": [
                         "The voice to which this dynamic group applies. By default, a dynamic group applies to all voices in the <a href=\"../part/\">part</a>."
                     ]
+                }
+            },
+            "description": [
+                "<p>A immediate dynamic is one that applies immediately, as opposed to <a href=\"../dynamic-group-gradual/\">gradually</a>, <a href=\"../dynamic-group-accent/\">temporarily</a> or <a href=\"../dynamic-group-relative/\">relatively</a>.</p>",
+                "",
+                "<p>This is used for standard dynamics such as \"f\" and \"p\". The dynamic value is an absolute value (not a relative one). This is the most common type of dynamic.</p>"
+            ]
+        },
+        "dynamic-group-gradual": {
+            "title": "gradual dynamic",
+            "kind": "dict",
+            "properties": {
+                "type": {
+                    "const": "gradual",
+                    "required": true
+                },
+                "value": {
+                    "type": "dynamic-value",
+                    "description": [
+                        "The dynamic value at the beginning of the gradual dynamic."
+                    ]
+                },
+                "end": {
+                    "type": "measure-rhythmic-position",
+                    "required": true,
+                    "description": [
+                        "The endpoint of the gradual dynamic."
+                    ]
                 },
                 "wedgeType": {
                     "type": "wedge-type",
+                    "required": true,
                     "description": [
-                        "Required if type is \"gradual\". This defines whether the hairpin is gradually opening or gradually closing."
+                        "Defines whether the hairpin is gradually opening or gradually closing."
+                    ]
+                },
+                "position": {
+                    "type": "rhythmic-position",
+                    "required": true,
+                    "description": [
+                        "The rhythmic position at which this dynamic group starts."
+                    ]
+                },
+                "staffEnd": {
+                    "type": "staff-number",
+                    "description": [
+                        "Optionally encodes the staff at which the hairpin ends, for hairpins that are angled diagonally and cross staves."
+                    ]
+                },
+                "prefix": {
+                    "type": "string",
+                    "description": [
+                        "Optional text to display before the dynamic marking, such as \"<i>più</i>\".",
+                        "",
+                        "This is free-form text displayed alongside the marking."
+                    ]
+                },
+                "suffix": {
+                    "type": "string",
+                    "description": [
+                        "Optional text to display after the dynamic marking, such as \"<i>sub.</i>\".",
+                        "",
+                        "This is free-form text displayed alongside the marking."
+                    ]
+                },
+                "placement": {
+                    "type": "multi-staff-placement",
+                    "description": [
+                        "Where the dynamic group is positioned, relative to the staff.",
+                        "",
+                        "If not provided, the default value is \"auto\"."
+                    ]
+                },
+                "staff": {
+                    "type": "staff-number",
+                    "description": [
+                        "The staff index to which this dynamic group applies. By default, a dynamic group applies to all staffs in the <a href=\"../part/\">part</a>."
+                    ]
+                },
+                "visuallyContinues": {
+                    "type": "id",
+                    "description": [
+                        "Points to the ID of the directly previous dynamic group, as a hint to rendering engines that this dynamic group and that previous one should be rendered as a single unit. (Typically this means the dynamics and hairpins are drawn at the same vertical position.)",
+                        "",
+                        "There is no limit to the length of a \"visuallyContinues\" chain. For example, it's perfectly OK for three or four dynamic groups to each define \"visuallyContinues\" pointing at the previous dynamic group.",
+                        "",
+                        "Encoding this is only strictly necessary if it can't be automatically derived by comparing consecutive dynamic groups' \"position\" and \"end\" attributes. Rendering engines are encouraged to determine the visuallyContinues value on their own, if it's not explicitly encoded."
+                    ]
+                },
+                "voice": {
+                    "type": "voice-name",
+                    "description": [
+                        "The voice to which this dynamic group applies. By default, a dynamic group applies to all voices in the <a href=\"../part/\">part</a>."
                     ]
                 }
             },
             "description": [
-                "<p>Encodes a dynamic value at a given rhythmic position.</p>",
-                "",
-                "<p>This is used for any type of dynamic, from immediate ones (such as \"p\" or \"f\") to gradual ones (such as crescendo hairpins).</p>",
-                "",
-                "<p>Various attributes are required only for certain types. For quick reference, here are the required attributes for each \"type\" value:</p>",
-                "",
-                "<ul>",
-                "<li>\"immediate\": position, value</li>",
-                "<li>\"gradual\": position, end, wedgeType</li>",
-                "<li>\"relative\": position, relativeValue</li>",
-                "<li>\"accent\": position, value</li>",
-                "</ul>",
+                "<p>A gradual dynamic is one that applies gradually over time, as opposed to <a href=\"../dynamic-group-immediate/\">immediately</a>, <a href=\"../dynamic-group-accent/\">temporarily</a> or <a href=\"../dynamic-group-relative/\">relatively</a>. This represents hairpins (crescendo, diminuendo).</p>",
                 "",
                 "<p>To encode a hairpin with both starting and ending dynamic values (such as \"p < f\"), use two separate dynamic groups:</p>",
                 "",
@@ -3448,6 +3482,187 @@
                 "<li>One with type=\"gradual\", value=\"p\" and wedgeType=\"increasing\"</li>",
                 "<li>A second with type=\"immediate\", value \"f\" and \"position\" equal to the previous dynamic group's \"end\"</li>",
                 "</ul>"
+            ]
+        },
+        "dynamic-group-relative": {
+            "title": "relative dynamic",
+            "kind": "dict",
+            "properties": {
+                "type": {
+                    "const": "relative",
+                    "required": true
+                },
+                "relativeValue": {
+                    "type": "relative-dynamic-value",
+                    "required": true
+                },
+                "position": {
+                    "type": "rhythmic-position",
+                    "required": true,
+                    "description": [
+                        "The rhythmic position at which this dynamic group starts."
+                    ]
+                },
+                "prefix": {
+                    "type": "string",
+                    "description": [
+                        "Optional text to display before the dynamic marking, such as \"<i>più</i>\".",
+                        "",
+                        "This is free-form text displayed alongside the marking."
+                    ]
+                },
+                "suffix": {
+                    "type": "string",
+                    "description": [
+                        "Optional text to display after the dynamic marking, such as \"<i>sub.</i>\".",
+                        "",
+                        "This is free-form text displayed alongside the marking."
+                    ]
+                },
+                "placement": {
+                    "type": "multi-staff-placement",
+                    "description": [
+                        "Where the dynamic group is positioned, relative to the staff.",
+                        "",
+                        "If not provided, the default value is \"auto\"."
+                    ]
+                },
+                "staff": {
+                    "type": "staff-number",
+                    "description": [
+                        "The staff index to which this dynamic group applies. By default, a dynamic group applies to all staffs in the <a href=\"../part/\">part</a>."
+                    ]
+                },
+                "visuallyContinues": {
+                    "type": "id",
+                    "description": [
+                        "Points to the ID of the directly previous dynamic group, as a hint to rendering engines that this dynamic group and that previous one should be rendered as a single unit. (Typically this means the dynamics and hairpins are drawn at the same vertical position.)",
+                        "",
+                        "There is no limit to the length of a \"visuallyContinues\" chain. For example, it's perfectly OK for three or four dynamic groups to each define \"visuallyContinues\" pointing at the previous dynamic group.",
+                        "",
+                        "Encoding this is only strictly necessary if it can't be automatically derived by comparing consecutive dynamic groups' \"position\" and \"end\" attributes. Rendering engines are encouraged to determine the visuallyContinues value on their own, if it's not explicitly encoded."
+                    ]
+                },
+                "voice": {
+                    "type": "voice-name",
+                    "description": [
+                        "The voice to which this dynamic group applies. By default, a dynamic group applies to all voices in the <a href=\"../part/\">part</a>."
+                    ]
+                }
+            },
+            "description": [
+                "<p>A relative dynamic is one whose value is meant to be interpreted relatively, like <i>più</i> p (\"quieter\").</p>"
+            ]
+        },
+        "dynamic-group-accent": {
+            "title": "accent dynamic",
+            "kind": "dict",
+            "properties": {
+                "type": {
+                    "const": "accent",
+                    "required": true
+                },
+                "value": {
+                    "type": "dynamic-value",
+                    "required": true,
+                    "description": [
+                        "The value of the initial attack (the \"f\" in \"sfz\"). See residualValue for the dynamic that applies afterward."
+                    ]
+                },
+                "position": {
+                    "type": "rhythmic-position",
+                    "required": true,
+                    "description": [
+                        "The rhythmic position at which this dynamic group starts."
+                    ]
+                },
+                "accentPrefix": {
+                    "type": "dynamic-prefix",
+                    "description": [
+                        "The prefix for the dynamic.",
+                        "",
+                        "For example, for a \"sfz\" dynamic, the prefix is \"s\".",
+                        "",
+                        "If not provided, the default is \"s\"."
+                    ]
+                },
+                "accentSuffix": {
+                    "type": "dynamic-suffix",
+                    "description": [
+                        "The suffix for the dynamic.",
+                        "",
+                        "For example, for a \"sfz\" dynamic, the suffix is \"z\".",
+                        "",
+                        "If not provided, the default is \"z\"."
+                    ]
+                },
+                "residualValue": {
+                    "type": "dynamic-value",
+                    "description": [
+                        "The dynamic that should be used after the initial accent attack.",
+                        "",
+                        "For example, this is used for \"fp\" dynamics, which are a bit of a special case meaning \"start playing in f, then immediately reduce dynamics to p.\" This is encoded as {\"value\": \"f\", \"residualValue\": \"p\"}."
+                    ]
+                },
+                "glyphs": {
+                    "items": [
+                        "smufl-glyph"
+                    ],
+                    "description": [
+                        "Optional list of SMuFL glyphs to use when displaying this dynamic.",
+                        "",
+                        "If this is provided, consuming applications should use these specific glyphs. If this isn't provided, consuming applications should automatically determine the SMuFL glyphs based on \"value\", \"residualValue\", \"accentPrefix\", and \"accentSuffix\"."
+                    ]
+                },
+                "prefix": {
+                    "type": "string",
+                    "description": [
+                        "Optional text to display before the dynamic marking, such as \"<i>più</i>\".",
+                        "",
+                        "This is free-form text displayed alongside the marking. It is not related to accentPrefix, which encodes a structural part of an accent marking itself."
+                    ]
+                },
+                "suffix": {
+                    "type": "string",
+                    "description": [
+                        "Optional text to display after the dynamic marking, such as \"<i>sub.</i>\".",
+                        "",
+                        "This is free-form text displayed alongside the marking. It is not related to accentSuffix, which encodes a structural part of an accent marking itself."
+                    ]
+                },
+                "placement": {
+                    "type": "multi-staff-placement",
+                    "description": [
+                        "Where the dynamic group is positioned, relative to the staff.",
+                        "",
+                        "If not provided, the default value is \"auto\"."
+                    ]
+                },
+                "staff": {
+                    "type": "staff-number",
+                    "description": [
+                        "The staff index to which this dynamic group applies. By default, a dynamic group applies to all staffs in the <a href=\"../part/\">part</a>."
+                    ]
+                },
+                "visuallyContinues": {
+                    "type": "id",
+                    "description": [
+                        "Points to the ID of the directly previous dynamic group, as a hint to rendering engines that this dynamic group and that previous one should be rendered as a single unit. (Typically this means the dynamics and hairpins are drawn at the same vertical position.)",
+                        "",
+                        "There is no limit to the length of a \"visuallyContinues\" chain. For example, it's perfectly OK for three or four dynamic groups to each define \"visuallyContinues\" pointing at the previous dynamic group.",
+                        "",
+                        "Encoding this is only strictly necessary if it can't be automatically derived by comparing consecutive dynamic groups' \"position\" and \"end\" attributes. Rendering engines are encouraged to determine the visuallyContinues value on their own, if it's not explicitly encoded."
+                    ]
+                },
+                "voice": {
+                    "type": "voice-name",
+                    "description": [
+                        "The voice to which this dynamic group applies. By default, a dynamic group applies to all voices in the <a href=\"../part/\">part</a>."
+                    ]
+                }
+            },
+            "description": [
+                "<p>An accent dynamic is for dynamics that are temporary accents on a single beat, such as sfz (sforzando). It's composed of \"value\" and \"residualValue\".</p>"
             ]
         },
         "multi-staff-placement": {
@@ -3465,27 +3680,6 @@
             },
             "description": [
                 "<p>Represents a symbol's vertical placement, with respect to one or more staves, including support for multi-staff music via the \"between\" value. See also <a href=\"../placement/\">placement</a>, which doesn't support \"between\".</p>"
-            ]
-        },
-        "dynamic-group-type": {
-            "title": "dynamic group type",
-            "kind": "string",
-            "values": {
-                "immediate": [
-                    "Used for standard dynamics such as f and p. The dynamic value is an absolute value (not a relative one). This is the most common type of dynamic."
-                ],
-                "gradual": [
-                    "Used for hairpins (crescendo, diminuendo)."
-                ],
-                "relative": [
-                    "Used for dynamics whose value is meant to be interpreted relatively, like <i>più</i> p (\"quieter\")."
-                ],
-                "accent": [
-                    "Used for dynamics that are temporary accents on a single beat, such as sfz (sforzando)."
-                ]
-            },
-            "description": [
-                "<p>Encodes the type of a <a href=\"../dynamic-group/\">dynamic group</a>.</p>"
             ]
         },
         "wedge-type": {
