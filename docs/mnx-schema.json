@@ -368,6 +368,12 @@
         "end": {
           "$ref": "#/$defs/measure-rhythmic-position"
         },
+        "glyphs": {
+          "items": {
+            "$ref": "#/$defs/smufl-glyph"
+          },
+          "type": "array"
+        },
         "placement": {
           "$ref": "#/$defs/multi-staff-placement"
         },
@@ -469,6 +475,12 @@
         }
       ],
       "properties": {
+        "glyphs": {
+          "items": {
+            "$ref": "#/$defs/smufl-glyph"
+          },
+          "type": "array"
+        },
         "placement": {
           "$ref": "#/$defs/multi-staff-placement"
         },
@@ -490,6 +502,9 @@
         "type": {
           "const": "relative",
           "type": "string"
+        },
+        "value": {
+          "$ref": "#/$defs/dynamic-value"
         },
         "visuallyContinues": {
           "$ref": "#/$defs/id"
@@ -2744,7 +2759,7 @@
       "type": "string"
     }
   },
-  "$id": "https://w3c-cg.github.io/mnx/docs/mnx-schema.json/version/41",
+  "$id": "https://w3c-cg.github.io/mnx/docs/mnx-schema.json/version/42",
   "$ref": "#/$defs/root",
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "description": "An encoding of Common Western Music Notation.",

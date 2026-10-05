@@ -1,5 +1,5 @@
 {
-    "version": 41,
+    "version": 42,
     "format": {
         "name": "MNX",
         "slug": "mnx"
@@ -3426,6 +3426,16 @@
                         "Optionally encodes the staff at which the hairpin ends, for hairpins that are angled diagonally and cross staves."
                     ]
                 },
+                "glyphs": {
+                    "items": [
+                        "smufl-glyph"
+                    ],
+                    "description": [
+                        "Optional list of SMuFL glyphs to use when displaying the dynamic in \"value\".",
+                        "",
+                        "If this is provided, consuming applications should use these specific glyphs. If this isn't provided, consuming applications should automatically determine the SMuFL glyphs based on \"value\"."
+                    ]
+                },
                 "prefix": {
                     "type": "string",
                     "description": [
@@ -3496,11 +3506,27 @@
                     "type": "relative-dynamic-value",
                     "required": true
                 },
+                "value": {
+                    "type": "dynamic-value",
+                    "description": [
+                        "An optional dynamic value. For example, in \"<i>più</i> p\", the \"value\" is p."
+                    ]
+                },
                 "position": {
                     "type": "rhythmic-position",
                     "required": true,
                     "description": [
                         "The rhythmic position at which this dynamic group starts."
+                    ]
+                },
+                "glyphs": {
+                    "items": [
+                        "smufl-glyph"
+                    ],
+                    "description": [
+                        "Optional list of SMuFL glyphs to use when displaying the dynamic in \"value\".",
+                        "",
+                        "If this is provided, consuming applications should use these specific glyphs. If this isn't provided, consuming applications should automatically determine the SMuFL glyphs based on \"value\"."
                     ]
                 },
                 "prefix": {
